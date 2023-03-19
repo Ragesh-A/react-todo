@@ -14,8 +14,7 @@ class Todo extends React.Component {
     }else{
 
       todoBody.classList.remove('active')
-    }
-    console.log(todoBody);
+    };
   }
 
 
