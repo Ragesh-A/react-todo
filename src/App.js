@@ -1,5 +1,10 @@
-import Todo from './components/todoApp/todoApp';
+import MainRouter from "./ReactRouter/MainRouter";
 
-const App = () => <Todo />;
+const App = () => {
+
+  return <MainRouter />
+
+
+};
 
 export default App;

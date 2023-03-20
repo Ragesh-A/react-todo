@@ -4,14 +4,58 @@
   padding: 0;
 }
 body{
-  min-height: 100vh;
   background: radial-gradient( #bcb4f4, #6853bf);
+  font-family: Arial, Helvetica, sans-serif;
+}
+#root{
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+}
+header{
+  background-color: white;
+}
+header ul{
+  display: flex;
+  padding: 1rem;
+  list-style: none;
+  justify-content: center;
+}
+header ul li a{
+  padding: 10px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #6853bf;
+  transition: .2s ;
+  border-radius: 10px 0 10px 0;
+}
+header ul li a:hover{
+  transform: scale(1.5);
+  background-color: #6853bf;
+  color: white;
+}
+header ul li a.active{
+  transform: scale(1.5);
+  background-color: #6853bf;
+  color: white;
+}
+.home-body{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.home-title{
+  color: #fff;
+  text-align: center;
 }
 .todo-container-wrap{
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -45%);
   width: 100%;
   height: 100%;
   max-height: 700px;
@@ -25,23 +69,36 @@ body{
   background-color: #6853bf;
   height: 100%;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  letter-spacing: 2px;
 }
 .title{
   text-align: center;
   padding: 1rem;
   color: #fff;
 }
+.description{
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: 800;
+  margin-bottom: 5px;
+}
 .todo-body{
   border-radius: 10px 10px 0 0;
   padding: 1rem;
   padding-bottom: 2rem;
-  height: 100%;
+  height: 0%;
   overflow-y: scroll;
   transition: 1s ease-in-out;
 }
 .todo-body.active{
   background: radial-gradient(transparent,rgba(0, 0, 0, 0.298));
   border: 1px solid #fff;
+  height: 100%;
 }
 .todo-body::-webkit-scrollbar{
   display: none;
@@ -61,6 +118,7 @@ body{
 .icons-wrap i{
   cursor: pointer;
   color: #0000005b;
+  margin: 0 5px;
 }
 .icons-wrap i:hover{
 
