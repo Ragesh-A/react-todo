@@ -5,15 +5,16 @@ const getLocalStorage = ()=>{
 }
 
 const FunctionalTodo = () => {
-  const [tasks, setTask] = useState(getLocalStorage());
+  const [tasks, setTask] = useState([]);
   const todoBody = useRef();
   const input = useRef();
+  console.log(tasks);
 
   //add new task into todo
   const addTask = (e) => {
     e.preventDefault();
     const taskInput = input.current.value.trimStart();
-    if (taskInput.length > 0) {
+    if (taskInput?.length > 0) {
       const newTask = {
         name: taskInput,
         completed: false
@@ -25,7 +26,7 @@ const FunctionalTodo = () => {
 
   //task completed
   const completeTask =(key)=>{
-    const newTask = tasks.map((task, index)=>{
+    const newTask = tasks?.map((task, index)=>{
     if(index === key){
       task.completed = true
     }
@@ -36,21 +37,27 @@ const FunctionalTodo = () => {
   
   //delete task from todo
   const deleteTask = (key) => {
-    const newTask = tasks.filter((task, index) => index != key);
+    const newTask = tasks.filter((task, index) => index !== key);
     setTask(newTask);
   };
 
   useEffect(() => {
-    {
-      if (tasks.length > 0) {
+    
+      if (tasks?.length > 0) {
         todoBody.current.className = 'todo-body active';
       } else {
         todoBody.current.className = 'todo-body';
       }
       localStorage.setItem('todoTask', JSON.stringify(tasks))
-    }
+    
   }, [tasks]);
 
+  useEffect(() => {
+    const previousTask = getLocalStorage()
+    if (!previousTask) {
+      setTask(previousTask)
+    }
+  }, [])
   return (
     <>
       <div className="todo-container-wrap">
@@ -62,7 +69,7 @@ const FunctionalTodo = () => {
           <div className="todo-body" ref={todoBody}>
             <div className="tasks-wrap">
               <ul id="tasks">
-                {tasks.map((task, index) => {
+                {tasks?.map((task, index) => {
                   return (
                     <li key={index} >
                       <p onClick={()=>completeTask(index)}>{task.completed ?  <strike> {task.name} </strike> : task.name}</p>

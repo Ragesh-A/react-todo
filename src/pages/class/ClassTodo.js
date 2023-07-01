@@ -8,7 +8,7 @@ class ClassTodo extends React.Component {
 
   checkColor(p) {
     const todoBody = document.querySelector('.todo-body');
-    if (this.state.task.length != 0) {
+    if (this.state.task.length !== 0) {
       todoBody.className = 'todo-body active';
     } else {
       todoBody.classList.remove('active');
@@ -34,7 +34,7 @@ class ClassTodo extends React.Component {
   deleteTask = (index) => {
     this.setState(
       {
-        task: this.state.task.filter((data, key) => key != index),
+        task: this.state.task.filter((data, key) => key !== index),
       },
       () => this.checkColor()
     );
@@ -52,7 +52,7 @@ class ClassTodo extends React.Component {
           <div className="todo-body">
             <div className="tasks-wrap">
               <ul id="tasks">
-                {task.map((data, index) => {
+                {task?.map((data, index) => {
                   return (
                     <li key={index}>
                       {data}
